@@ -1,5 +1,3 @@
-console.log(`hello world`);
-
 //Declaraciòn de objeto/datos para mostrar la informaciòn en la web
 const data = {
     "currentDate": "2022-01-01",
@@ -175,13 +173,14 @@ const data = {
     ]
 };
 
-//Declraciòn de identificar/div donde se va a mostrar la informaciòn 
+//Declaraciòn de identificar/div donde se va a mostrar la informaciòn 
 const containerUpcoming = document.getElementById(`containerCards`);
 const containerPast = document.getElementById(`containerCardsPast`);
+const containerHome = document.getElementById(`containerCardsHome`);
 
-//Tomamos fecha actual del sistema para hacer la comparaciòn y saber cuales tarjetas mostra antes y depues de la fecha
+//Tomamos fecha base que viene dentro del objeto/informaciòn con la que estamos trabajando
 let date = new Date();
-let output = date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + String(date.getDate()).padStart(2, '0');
+let output = data.currentDate;
 
 //Imprime en consolalafecha que estamos tomando
 console.log(output);
@@ -193,7 +192,7 @@ function UpcomingEvents() {
 //Recorremos el objeto/informaciòn para sacar su informaciòn a mostrar
 data.events.forEach(info => {
 
-    //Comparamos la fecha actual con las fechas de las tarjetas para saber cuales son de antes y depues de la fecha que queremos
+    //Comparamos la fecha que nso dan con las fechas de las tarjetas para saber cuales son de antes y despues de la fecha que queremos
     if (info.date > output) {
 
         //aqui es donde pintamos/(imprimimos datos) en nuestro contenedor en HTML     
@@ -207,8 +206,10 @@ data.events.forEach(info => {
         </div>
     
         <div class="card-body d-flex justify-content-around">
-            <span>Price $2000 ${info.date}</span>
-            <button type="button" class="btn btn-primary">Primary</button>
+            <span>Price $2000 </span>
+            <a href="details.html">
+            <button type="button" class="btn btn-primary">  Details</button>
+            </a>
         </div>
     </div>
     </div>`
@@ -237,11 +238,42 @@ function pastEvents() {
             </div>
         
             <div class="card-body d-flex justify-content-around">
-                <span>Price $2000 ${info.date}</span>
-                <button type="button" class="btn btn-primary">Primary</button>
+                <span>Price $2000 </span>
+                <a href="details.html">
+                <button type="button" class="btn btn-primary">  Details</button>
+                </a>
             </div>
         </div>
         </div>`
         };
+    });
+    };
+
+
+//Esta fucniòn es para home
+function homeEvents() {
+    
+    //Recorremos el objeto/informaciòn para sacar su informaciòn a mostrar
+    data.events.forEach(info => {
+        
+            //aqui es donde pintamos/(imprimimos datos) en nuestro contenedor en HTML     
+            containerHome.innerHTML +=
+                `<div class="col-md-3">
+        <div class="card" style="width: 18rem;">
+            <img src="${info.image}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${info.name}</h5>
+                <p class="card-text">${info.description}</p>
+            </div>
+        
+            <div class="card-body d-flex justify-content-around">
+                <span>Price $2000 </span>
+                <a href="details.html">
+                <button type="button" class="btn btn-primary">  Details</button>
+                </a>
+            </div>
+        </div>
+        </div>`
+        
     });
     };
