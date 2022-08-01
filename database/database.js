@@ -198,6 +198,7 @@ const containerCategorys = document.getElementById("containerCategorys");
 
 let category = "";
 let categoryClone = "";
+let arrCategorys = [];
 
 //Tomamos fecha base que viene dentro del objeto/informaciòn con la que estamos trabajando
 let date = new Date();
@@ -311,8 +312,17 @@ function homeEvents() {
 }
 
 function filtroCheckBox(category) {
-  console.log(category);
+  //Limpiamos el contenedor para pintar lo que buscamos
   containerHome.innerHTML = ``;
+
+  //guardamos la categoria a buscar en nuestro arreglo
+  arrCategorys.push(category);
+
+  //Limpiamos el array para no tener datos repetidos
+  let arrResult = arrCategorys.filter((item, index) => {
+    return arrCategorys.indexOf(item) === index;
+  });
+  console.log(arrResult);
 
   data.events.forEach((info) => {
     //* Aquí vamos a comparar las categorias para no repetirlas
