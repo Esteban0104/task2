@@ -325,10 +325,11 @@ function filtroCheckBox(category) {
   console.log(arrResult);
 
   data.events.forEach((info) => {
-    //* Aquí vamos a comparar las categorias para no repetirlas
-    if (info.category == category) {
-      //aqui es donde pintamos/(imprimimos datos) en nuestro contenedor en HTML
-      containerHome.innerHTML += `<div class="col-md-3">
+    arrResult.forEach((element) => {
+      //* Aquí vamos a comparar las categorias para no repetirlas
+      if (info.category == element) {
+        //aqui es donde pintamos/(imprimimos datos) en nuestro contenedor en HTML
+        containerHome.innerHTML += `<div class="col-md-3">
         <div class="card" style="width: 18rem;">
             <img src="${info.image}" class="card-img-top" alt="...">
             <div class="card-body">
@@ -344,6 +345,7 @@ function filtroCheckBox(category) {
             </div>
         </div>
         </div>`;
-    }
+      }
+    });
   });
 }
