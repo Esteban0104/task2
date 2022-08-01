@@ -276,7 +276,7 @@ function homeEvents() {
     if (category == "" && categoryClone == "") {
       //vamos pintar las categorias en nuestro HTML
       containerCategorys.innerHTML += `<div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="checkBoxCategory" value="${info.category}"  onclick="filtroCheckBox('${info.category}')">
+    <input class="form-check-input" type="checkbox" id="${info._id}" value="${info.category}"  onclick="filtroCheckBox('${info.category}')">
     <label class="form-check-label" for="checkBoxCategory">${info.category}</label>
     </div>`;
 
@@ -284,7 +284,7 @@ function homeEvents() {
     } else if (info.category != categoryClone) {
       //vamos pintar las categorias en nuestro HTML
       containerCategorys.innerHTML += `<div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" id="checkBoxCategory" value="${info.category}"  onclick="filtroCheckBox('${info.category}')">
+      <input class="form-check-input" type="checkbox" id="${info._id}" value="${info.category}"  onclick="filtroCheckBox('${info.category}')">
       <label class="form-check-label" for="checkBoxCategory">${info.category}</label>
       </div>`;
 
@@ -292,7 +292,7 @@ function homeEvents() {
     }
 
     //aqui es donde pintamos/(imprimimos datos) en nuestro contenedor en HTML
-    containerHome.innerHTML += `<div class="col-md-3">
+    containerHome.innerHTML += `<div class="col-md-3 ">
         <div class="card" style="width: 18rem;">
             <img src="${info.image}" class="card-img-top" alt="...">
             <div class="card-body">
