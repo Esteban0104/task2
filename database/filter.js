@@ -200,23 +200,22 @@ const Race = document.getElementById("Race");
 const BookExchange = document.getElementById("BookExchange");
 const Cinema = document.getElementById("Cinema");
 
-Food.addEventListener("", function () {});
+function categoryFilter(idContainer) {
+  idContainer.addEventListener("change", validaCheckbox, false);
 
+  containerHome.innerHTML = ``;
 
+  function validaCheckbox() {
+    var checked = idContainer.checked;
+    if (checked) {
+      console.log("checkbox1 esta seleccionado ");
 
+      //containerHome.innerHTML += ``;
 
-Food.addEventListener("change", validaCheckbox, false);
-function validaCheckbox() {
-  var checked = Food.checked;
-  if (checked) {
-    console.log("checkbox1 esta seleccionado ");
-
-    containerHome.innerHTML = ``;
-
-    data.events.forEach((element) => {
-      if (Food.value == element.category) {
-        //aqui es donde pintamos/(imprimimos datos) en nuestro contenedor en HTML
-        containerHome.innerHTML += `<div class="col-md-3 ">
+      data.events.forEach((element) => {
+        if (idContainer.value == element.category) {
+          //aqui es donde pintamos/(imprimimos datos) en nuestro contenedor en HTML
+          containerHome.innerHTML += `<div class="col-md-3 ">
           <div class="card" style="width: 18rem;">
               <img src="${element.image}" class="card-img-top" alt="...">
               <div class="card-body">
@@ -232,10 +231,19 @@ function validaCheckbox() {
               </div>
           </div>
           </div>`;
-      }
-    });
-  } else {
-    console.log("Ya no esta seleccionado");
-    containerHome.innerHTML = ``;
+        }
+      });
+    } else {
+      console.log("Ya no esta seleccionado");
+      containerHome.innerHTML = ``;
+    }
   }
 }
+
+categoryFilter(Food);
+categoryFilter(Museum);
+categoryFilter(CostumeParty);
+categoryFilter(MusicConcert);
+categoryFilter(Race);
+categoryFilter(BookExchange);
+categoryFilter(Cinema);
